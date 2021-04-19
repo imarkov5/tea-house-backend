@@ -1,5 +1,6 @@
 package com.irinamarkov.teahouse.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,18 +23,18 @@ public class OrderItem {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     Long id;
 
-    @NotNull
     int quantity;
 
-    @NotNull
     double subtotal;
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name = "product_id")
+    @JsonIgnore
     Product product;
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="order_id")
+    @JsonIgnore
     Order order;
 
     @Column(updatable=false)

@@ -1,5 +1,6 @@
 package com.irinamarkov.teahouse.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,14 +24,15 @@ public class Order {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     Long id;
 
-    @NotNull
     double total;
 
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+    @JsonIgnore
     List<OrderItem> orderItems;
 
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="customer_id")
+    @JsonIgnore
     Customer customer;
 
     @Column(updatable=false)

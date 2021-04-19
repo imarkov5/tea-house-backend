@@ -1,5 +1,6 @@
 package com.irinamarkov.teahouse.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,6 +10,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @NoArgsConstructor
@@ -22,17 +25,29 @@ public class CustomerAddress {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     Long id;
 
+    @NotNull
     @NotBlank
+    @Size(max = 100)
     String street;
+
+    @NotNull
     @NotBlank
+    @Size(max = 45)
     String city;
+
+    @NotNull
     @NotBlank
+    @Size(min = 2, max = 25)
     String state;
+
+    @NotNull
     @NotBlank
+    @Size(min = 5, max = 10)
     String zipcode;
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="customer_id")
+    @JsonIgnore
     Customer customer;
 
     @Column(updatable=false)

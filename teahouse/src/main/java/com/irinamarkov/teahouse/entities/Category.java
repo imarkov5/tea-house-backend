@@ -1,5 +1,6 @@
 package com.irinamarkov.teahouse.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,6 +10,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.List;
 
@@ -23,10 +26,13 @@ public class Category {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     Long id;
 
+    @NotNull
     @NotBlank
+    @Size(max = 45)
     String name;
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+    @OneToMany(mappedBy = "category", cascade = CascadeType.REMOVE, fetch=FetchType.LAZY)
+    @JsonIgnore
     List<Product> products;
 
     @Column(updatable=false)

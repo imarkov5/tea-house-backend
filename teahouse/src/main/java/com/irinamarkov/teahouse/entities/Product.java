@@ -15,6 +15,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.Date;
 import java.util.List;
 
@@ -28,13 +29,19 @@ public class Product {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     Long id;
 
+    @NotNull
     @NotBlank
+    @Size(max = 50)
     String name;
 
+    @NotNull
     @NotBlank
+    @Size(max = 500)
     String description;
 
+    @NotNull
     @NotBlank
+    @Size(min = 4, max = 20)
     String serialNumber;
 
     @NotNull
@@ -43,19 +50,22 @@ public class Product {
     @NotNull
     int quantity;
 
+    @NotNull
     @NotBlank
     String imageUrl;
 
-    @JsonIdentityInfo(
-            generator = ObjectIdGenerators.PropertyGenerator.class,
-            property = "category_id"
-    )
+//    @JsonIdentityInfo(
+//            generator = ObjectIdGenerators.PropertyGenerator.class,
+//            property = "category_id"
+//    )
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="category_id")
+    @JsonIgnore
     Category category;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
     List<OrderItem> orderItems;
 
     @Column(updatable=false)

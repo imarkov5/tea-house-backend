@@ -16,6 +16,8 @@ import java.util.List;
 public class OrderController {
     @Autowired
     OrderService orderService;
+    @Autowired
+    OrderItemService orderItemService;
 
     @GetMapping (path = "")
     public List<Order> getAllOrders(){
@@ -37,9 +39,9 @@ public class OrderController {
     public void deleteOrder(@PathVariable Long id){
         this.orderService.deleteOrder(id);
     }
-    @PostMapping(path="/{id}/addItem")
-    public void addItem(@RequestBody OrderItem orderItem, @RequestBody Product product, @PathVariable Long id ){
-        List<OrderItem> orderItemsList = this.orderService.getOneOrder(id).getOrderItems();
-        orderItemsList.add(orderItem);
-    }
+//    @PostMapping(path="/{order_id}/{product_id}")
+//    public void addItem(@RequestBody OrderItem orderItem, @PathVariable Long product_id, @PathVariable Long order_id ){
+//        List<OrderItem> orderItemsList = this.orderService.getOneOrder(order_id).getOrderItems();
+//        orderItemsList.add(this.orderItemService.createOrderItem(orderItem.setProduct();));
+//    }
 }

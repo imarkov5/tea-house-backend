@@ -15,17 +15,34 @@ public class ProductService {
     public List<Product> getAllProducts(){
         return this.productRepo.findAll();
     }
+
     public Product createProduct(Product newProduct){
         return this.productRepo.save(newProduct);
     }
-    public Product getOneProduct(Long id){
+
+    public Product getProductById(Long id){
         return this.productRepo.findById(id).orElse(null);
     }
-    public Product updateProduct(Product updatedProduct){
-        return this.productRepo.save(updatedProduct);
+
+    public Product updateProduct(Product productInfo) {
+        Product existingProduct = this.productRepo.findById(productInfo.getId()).orElse(null);
+        existingProduct.setName(productInfo.getName());
+        existingProduct.setPrice(productInfo.getPrice());
+        existingProduct.setDescription(productInfo.getDescription());
+        existingProduct.setImageUrl(productInfo.getImageUrl());
+        existingProduct.setQuantity(productInfo.getQuantity());
+        existingProduct.setSerialNumber(productInfo.getSerialNumber());
+
+        return this.productRepo.save(existingProduct);
     }
+
     public void deleteProduct(Long id){
         this.productRepo.deleteById(id);
+    }
+
+
+    public Product getProductByName(String name){
+        return this.productRepo.findByName(name);
     }
 
 }

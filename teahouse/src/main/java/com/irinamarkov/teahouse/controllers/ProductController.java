@@ -2,7 +2,6 @@ package com.irinamarkov.teahouse.controllers;
 
 import com.irinamarkov.teahouse.entities.Category;
 import com.irinamarkov.teahouse.entities.Product;
-import com.irinamarkov.teahouse.services.CategoryService;
 import com.irinamarkov.teahouse.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,20 +22,27 @@ public class ProductController {
     public Product createProduct(@RequestBody Product product){
         return this.productService.createProduct(product);
     }
-    @GetMapping(path="/{id}")
+    @GetMapping(path="/id/{id}")
     public Product getProductById(@PathVariable Long id){
-        return this.productService.getOneProduct(id);
+        return this.productService.getProductById(id);
     }
-    @PutMapping(path="")
+    @PutMapping(path="/update")
     public Product updateProduct(@RequestBody Product updatedProduct){
         return this.productService.updateProduct(updatedProduct);
     }
-    @DeleteMapping(path="/{id}")
+    @DeleteMapping(path="/delete/{id}")
     public void deleteProduct(@PathVariable Long id){
         this.productService.deleteProduct(id);
     }
+
+    @GetMapping(path="/name/{name}")
+    public Product getProductByName(@PathVariable String name){
+        return this.productService.getProductByName(name);
+    }
+
     @PostMapping(path="/addCategory")
     public void addCategory(@RequestBody Category category, @RequestBody Product product){
         this.productService.updateProduct(product).setCategory(category);
     }
+
 }
