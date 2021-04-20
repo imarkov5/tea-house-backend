@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins= {"http://localhost:3000"})
 @RequestMapping(path="/products")
 public class ProductController {
     @Autowired
@@ -40,9 +41,11 @@ public class ProductController {
         return this.productService.getProductByName(name);
     }
 
-    @PostMapping(path="/addCategory")
-    public void addCategory(@RequestBody Category category, @RequestBody Product product){
-        this.productService.updateProduct(product).setCategory(category);
+    @GetMapping(path="/serial_number/{serialNumber}")
+    public Product getProductBySerialNumber(@PathVariable String serialNumber){
+        return this.productService.getProductBySerialNumber(serialNumber);
     }
+
+
 
 }

@@ -39,9 +39,6 @@ public class OrderController {
     public void deleteOrder(@PathVariable Long id){
         this.orderService.deleteOrder(id);
     }
-//    @PostMapping(path="/{order_id}/{product_id}")
-//    public void addItem(@RequestBody OrderItem orderItem, @PathVariable Long product_id, @PathVariable Long order_id ){
-//        List<OrderItem> orderItemsList = this.orderService.getOneOrder(order_id).getOrderItems();
-//        orderItemsList.add(this.orderItemService.createOrderItem(orderItem.setProduct();));
-//    }
+
+
 }

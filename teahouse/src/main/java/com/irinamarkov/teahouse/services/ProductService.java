@@ -44,5 +44,8 @@ public class ProductService {
     public Product getProductByName(String name){
         return this.productRepo.findByName(name);
     }
+    public Product getProductBySerialNumber(String serialNumber){
+        return this.productRepo.findBySerialNumber(serialNumber);
+    }
 
 }
