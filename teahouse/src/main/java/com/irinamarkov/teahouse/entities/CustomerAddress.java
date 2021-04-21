@@ -1,6 +1,5 @@
 package com.irinamarkov.teahouse.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -47,7 +46,6 @@ public class CustomerAddress {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="customer_id")
-    @JsonIgnore
     Customer customer;
 
     @Column(updatable=false)

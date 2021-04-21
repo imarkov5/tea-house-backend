@@ -1,6 +1,5 @@
 package com.irinamarkov.teahouse.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -54,11 +53,9 @@ public class Customer {
     String confirmPassword;
 
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnore
     List<Order> orders;
 
     @OneToOne(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnore
     CustomerAddress customerAddress;
 
     @Column(updatable=false)

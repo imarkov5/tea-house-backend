@@ -1,6 +1,7 @@
 package com.irinamarkov.teahouse.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,7 +33,7 @@ public class Category {
     String name;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.REMOVE, fetch=FetchType.LAZY)
-    @JsonIgnore
+    @JsonManagedReference
     List<Product> products;
 
     @Column(updatable=false)

@@ -1,8 +1,5 @@
 package com.irinamarkov.teahouse.entities;
-
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -54,18 +51,12 @@ public class Product {
     @NotBlank
     String imageUrl;
 
-//    @JsonIdentityInfo(
-//            generator = ObjectIdGenerators.PropertyGenerator.class,
-//            property = "category_id"
-//    )
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="category_id")
-    @JsonIgnore
+    @JsonBackReference
     Category category;
 
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnore
     List<OrderItem> orderItems;
 
     @Column(updatable=false)

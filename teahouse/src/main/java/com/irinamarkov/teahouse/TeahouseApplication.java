@@ -13,14 +13,4 @@ public class TeahouseApplication {
 		SpringApplication.run(TeahouseApplication.class, args);
 	}
 
-//	@Bean
-//	public WebMvcConfigurer corsConfigurer(){
-//		return new WebMvcConfigurer() {
-//			@Override
-//			public void addCorsMappings(CorsRegistry registry) {
-//				registry.addMapping("/products-javaconfig").allowedOrigins("http://localhost:8080");
-//			}
-//		};
-//	}
-
 }
