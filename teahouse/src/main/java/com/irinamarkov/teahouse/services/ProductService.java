@@ -24,13 +24,14 @@ public class ProductService {
         return this.productRepo.findById(id).orElse(null);
     }
 
-    public Product updateProduct(Product productInfo) {
-        Product existingProduct = this.productRepo.findById(productInfo.getId()).orElse(null);
+    public Product updateProduct(Long id, Product productInfo) {
+        Product existingProduct = this.productRepo.findById(id).orElse(null);
         existingProduct.setName(productInfo.getName());
         existingProduct.setPrice(productInfo.getPrice());
         existingProduct.setDescription(productInfo.getDescription());
         existingProduct.setImageUrl(productInfo.getImageUrl());
         existingProduct.setQuantity(productInfo.getQuantity());
+        existingProduct.setCategory_id(productInfo.getCategory_id());
         existingProduct.setSerialNumber(productInfo.getSerialNumber());
 
         return this.productRepo.save(existingProduct);

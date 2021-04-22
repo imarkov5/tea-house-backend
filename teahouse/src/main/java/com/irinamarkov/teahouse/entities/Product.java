@@ -51,8 +51,11 @@ public class Product {
     @NotBlank
     String imageUrl;
 
+    @NotNull
+    int category_id;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="category_id")
+    @JoinColumn(name="category_id", insertable = false, updatable = false)
     @JsonBackReference
     Category category;
 
