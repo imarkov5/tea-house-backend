@@ -31,19 +31,20 @@
 *Created DB diagram in MySQL workbench with 6 tables: product, category, order_item, order, customer, customer_address 
 *Created Entities based on the diagram with 4 OneToMany relationships and 1 OneToOne relationship.
 *Parsed json file and populated Product and Category tables. Checked cardinality in MySQL.
-*Create repos, services and controllers for each of the entity
-*Tested all routes, Post, Get, Update and Delete for all controllers in Postman
+*Created repos, services and controllers for each of the entity
+*Tested all routes endpoints for all endpoints, Post, Get, Update and Delete for all controllers in Postman
 *Made API documentation
-*Created Admin with a table and buttons to show CRUD functionality. 
-*Created NewProduct, UpdateProduct components with forms.
+*Created Admin with a table and buttons to show CRUD functionality in React app. 
+*Created NewProduct, UpdateProduct components with forms to implement all CRUD functionality in React app.
 <h2>
     4. Reflection / Refactor
 </h2>
-*I would like to add login functionality for user and admin.
+*I would like to add login functionality for user and admin in both React and Spring boot.
+*Implement bcrypt and hashing for User and Admin passwords
+*Refactor React App, restructure. Move all logic from App.js and leave only route in there.
+*Implement Spring Boot Security for the backend.
 *Implement cart and order with back end.
-*Refactor React App, restructure
+*Probably try to implement PayPal instead of Stripe.
 *
-*
-*
-*
+
 POSTMAN API Documentation: https://documenter.getpostman.com/view/15403818/TzJx6vMe
