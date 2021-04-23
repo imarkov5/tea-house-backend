@@ -38,6 +38,7 @@ public class ProductService {
     }
 
     public void deleteProduct(Long id){
+//        Product deletedProduct = productRepo.findById(id).orElse(null);
         this.productRepo.deleteById(id);
     }
 

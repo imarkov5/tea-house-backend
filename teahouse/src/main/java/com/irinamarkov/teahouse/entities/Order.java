@@ -1,5 +1,7 @@
 package com.irinamarkov.teahouse.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,11 +27,15 @@ public class Order {
 
     double total;
 
+    int customer_id;
+
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+    @JsonManagedReference
     List<OrderItem> orderItems;
 
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="customer_id")
+    @JoinColumn(name="customer_id", insertable = false, updatable = false)
+    @JsonBackReference
     Customer customer;
 
     @Column(updatable=false)

@@ -44,8 +44,10 @@ public class CustomerAddress {
     @Size(min = 5, max = 10)
     String zipcode;
 
+    int customer_id;
+
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="customer_id")
+    @JoinColumn(name="customer_id", insertable = false, updatable = false)
     Customer customer;
 
     @Column(updatable=false)

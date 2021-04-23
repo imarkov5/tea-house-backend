@@ -1,4 +1,6 @@
 package com.irinamarkov.teahouse.entities;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,12 +27,18 @@ public class OrderItem {
 
     double subtotal;
 
+    int product_id;
+
+    int order_id;
+
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name = "product_id")
+    @JoinColumn(name = "product_id", insertable = false, updatable = false)
+    @JsonIgnore
     Product product;
 
     @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="order_id")
+    @JoinColumn(name="order_id", insertable = false, updatable = false)
+    @JsonBackReference
     Order order;
 
     @Column(updatable=false)
