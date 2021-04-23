@@ -14,10 +14,6 @@ public class OrderItemService {
         return this.orderItemRepo.save(newItem);
     }
 
-    public OrderItem readOrderItem(Long id){
-        return this.orderItemRepo.findById(id).orElse(null);
-    }
-
     public OrderItem updateOrderItem(OrderItem updatedItem){
         return this.orderItemRepo.save(updatedItem);
     }

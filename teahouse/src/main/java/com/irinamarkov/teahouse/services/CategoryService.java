@@ -15,17 +15,8 @@ public class CategoryService {
     public List<Category> getAllCategories(){
         return this.categoryRepo.findAll();
     }
+
     public Category createCategory(Category newCategory){
         return this.categoryRepo.save(newCategory);
     }
-    public Category getCategoryById(Long categoryId){
-        return this.categoryRepo.findById(categoryId).orElse(null);
-    }
-    public Category updateCategory(Category updatedCategory){
-        return categoryRepo.save(updatedCategory);
-    }
-    public void deleteCategory(Long id){
-        this.categoryRepo.deleteById(id);
-    }
-
 }

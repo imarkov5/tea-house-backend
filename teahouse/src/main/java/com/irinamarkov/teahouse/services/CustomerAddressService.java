@@ -15,7 +15,4 @@ public class CustomerAddressService {
         newAddress.setCustomer_id(id);
         return this.customerAddressRepo.save(newAddress);
     }
-    public CustomerAddress getOneAddress(Long id){
-        return this.customerAddressRepo.findById(id).orElse(null);
-    }
 }

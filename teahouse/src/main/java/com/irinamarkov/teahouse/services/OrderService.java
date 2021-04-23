@@ -15,15 +15,19 @@ public class OrderService {
     public List<Order> getAllOrders(){
         return this.orderRepo.findAll();
     }
+
     public Order createOrder(Order newOrder){
         return this.orderRepo.save(newOrder);
     }
+
     public Order getOneOrder(Long id){
         return this.orderRepo.findById(id).orElse(null);
     }
+
     public Order updateOrder(Order updatedOrder){
         return this.orderRepo.save(updatedOrder);
     }
+
     public void deleteOrder(Long id){
         this.orderRepo.deleteById(id);
     }
