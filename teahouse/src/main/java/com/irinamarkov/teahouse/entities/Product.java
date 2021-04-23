@@ -1,6 +1,5 @@
 package com.irinamarkov.teahouse.entities;
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,10 +7,8 @@ import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
 import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import java.util.Date;

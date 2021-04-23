@@ -2,7 +2,6 @@ package com.irinamarkov.teahouse.controllers;
 
 import com.irinamarkov.teahouse.entities.Order;
 import com.irinamarkov.teahouse.entities.OrderItem;
-import com.irinamarkov.teahouse.entities.Product;
 import com.irinamarkov.teahouse.services.OrderItemService;
 import com.irinamarkov.teahouse.services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
